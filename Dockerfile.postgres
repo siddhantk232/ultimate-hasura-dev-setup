@@ -1,0 +1,16 @@
+FROM postgres:latest
+
+ENV PG_MAJOR 13
+ENV PG_FULL 13.1
+
+# Install the postgresql debugger
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+  postgresql-$PG_MAJOR-pldebugger
+  
+
+EXPOSE 5432
+
+#run below in DB to enable the extension
+#CREATE EXTENSION pldbgapi;
+
